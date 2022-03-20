@@ -1,25 +1,98 @@
-1. Modules : Bunch of files togather makes compilation faster ,  
-2. Plugins : 
-3. Platformrs : 
+Unreal : Tool to code , Low language , BP scripting , Networking nativly availaible.
+BP has State Engine . Src code -> Build tools -> Build-> cook -> pack 
 
-BaseTypes 
-Enums 
-UENUMS top of c++ enums metadata
 
-Strings Fstring, Fname Unqie names for actors , Ftext - Localization
-Collection: TMAp, Tarray cant have array of array, Tset
+1. Modules : Bunch of files organized together as one feature ,  makes compilation easy specific module which changed.Pramotes re usablity 
+2. Plugins : Decouped from code , live in engine or project .  activate / Decactivate at game.
+3. Platformrs : isoloate platform specific feaure [ new experimental]
+
+BaseTypes : Basic Data types & Structures ,  UObject and Actors are pillars for programming , Other useful data types.
+Enums : UENUMS top of c++ enums metadata example Enum(BluwprintType) enu, {A,B} 
+Strings Fstring basic ones, Fname Unqie names for actors , Ftext - Localization , gather all Ftext ans localize it in actors, BP etc
+Collection: TMap, TArray  TSet can't have array of array,
+
+UOBject:   Most important ones are UObject Hanngeled by GC. Actors are inherited from UObject 
+
 Transform types:  FVectors, Frotator Fquant Ftransform 
-Actor Base  ones : UObject  , Actor <- Components can be attached to  Actors ()
+Actor Base  ones : they recive calls , events , can be transformed 
+                  UObject  , Actor <- Components can be attached to  Actors ()
                   Actors are memory managed by smart pointers. 
                   Actor &  Components can provide functionality 
                   Components = Mesh , Damagable , Spring Arm 
                   Life cycle of Actors : Levels , Spwend from Code/Blueprint . Managed by Smart pointers 
+                  BeginPlay
+                  InitializeComponents
+                  EndPlay
+                  PendingKill [Common error Actor must not be accesses if ib this state of life cycle]
+                  BP Lifecycle                 
                   Creating :  Spawned by code , GC will destroy smart pointer.
                   
+BasicData Types:  Curevs data inetpolation movement between actors, 
+                FDataTables, FTableRows 
+                DataAssets,
+                
+
+Memory management: Loading assets options e.g ref from code as soon as code is loaded / ref to assset ask streaming system to load async.
+                   GC - Auto mem for UPROPERTY members, configurable based on GC and reflection 
+                   Placed or Spawned : Actors can be conrolled , if placed in map , when map is unloaded auto GC. 
+                   Refrence chains.
+               
+                 
 
 
 MACROS : UFUNCTION , UPROPERTY, UCLASS, GENERATEDBY , 
 Inside macros there are specifiers : e.g BlueprintReadOnly , BlueprintReadWrite, BluwPrintCallable :UFUNCTION
-Expose functinality for designer 
+Expose functinality for designer.
 
+
+
+Game Play Framework  : Control Game Flow, Having Charachters in game , Player to control any kind of interaction in the game.
+                       GameMode : Class that defines the flow of execution . Only on Server. Lifetime depends on Level . Client cant access GameMode.
+                       GameState : Aux xclass for GameMode that exisist in server and clients. good for sharing global info and functions 
+                                  all game info is in  GameMode, if it needs to be shared with clients then it is done via GameState. e.g enemy indo in GameMode and mark it as replicate.  Replication is feture of UEEngine.
+                       PlayerState:  Aux class for the PlayerController that exists in all server and clients. good to share player info among every client. PlayerState -> PlayerController -> Pawn/Charachter
+                       PlayerController: As the brain of pawn input is interpreted as actions . Controller can easily posses or unpossess Pawns exists on owner client server . PlayerController can be driven by input of player can be other controller like AI Controll like Behaviour trees.
+                       Player controller can tell AI Controller to control groups.
+                       Only the player client will have PlayerController in the game. Can possess groups of actors , 
+                       GameInstance : Life time of execution of the app till app is closed. will persiist info between level change. 
+                       
+                       
+                       Go to  Project settings -> Engine ->  Input : see how diffrent see how inputs are transformed into actions.
+                       
+SubSystems :instead of overiding engine classes , SubSystems allows to work with instances directly.
+                       Pawn/Charachter: Physical body of everything that performs actions and has behaviour . Can be possed by controller and perform its commands.
+                       InputComponent: Dispatches player input to any designated listner The Input can be setup by player ID
+                       
+
+Ticking:  flex config  to update things , happens every frame of couple of frames or group of frames . 
+
+Replication: network system . Its based on onwer ship , can replicate both Actors or properties , based on reliablity .
+                              hook to events to actions 
+                              
+                              OwnerShip: 
+                              Property Replication:
+                              RPC:
+                              Actor Replication:
+                              Reliablity:
+                              
+                              
+
+Extra:                        
+Damage Sysytem , Movement Components for example to move charachters                       
+Async Tasking : System to create Task that are processed async, good for saving files on disk or making best out of cpu .e.g save the game
+Delegates And Evnets: C++ code & BP  can recive and broadcast them . Most basic form is DECLARE_DELEGATE
+
+LIV++ : Real time compiler 
+
+
+
+
+UI Automation  Tools :
+Build -> Cook -> On the fly/ Cook by the book. -> Pack -> 
+All this ghooks into Debug/Profileing tool: Stats, Console commands, Unreal insigts  , mem profile , LLM Low level mem accurate vision of what things are loaded in memory, ProfileGpu 
+
+
+
+
+Programming Advice: 
 
