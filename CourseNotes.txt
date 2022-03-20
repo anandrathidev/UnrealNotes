@@ -1,0 +1,25 @@
+1. Modules : Bunch of files togather makes compilation faster ,  
+2. Plugins : 
+3. Platformrs : 
+
+BaseTypes 
+Enums 
+UENUMS top of c++ enums metadata
+
+Strings Fstring, Fname Unqie names for actors , Ftext - Localization
+Collection: TMAp, Tarray cant have array of array, Tset
+Transform types:  FVectors, Frotator Fquant Ftransform 
+Actor Base  ones : UObject  , Actor <- Components can be attached to  Actors ()
+                  Actors are memory managed by smart pointers. 
+                  Actor &  Components can provide functionality 
+                  Components = Mesh , Damagable , Spring Arm 
+                  Life cycle of Actors : Levels , Spwend from Code/Blueprint . Managed by Smart pointers 
+                  Creating :  Spawned by code , GC will destroy smart pointer.
+                  
+
+
+MACROS : UFUNCTION , UPROPERTY, UCLASS, GENERATEDBY , 
+Inside macros there are specifiers : e.g BlueprintReadOnly , BlueprintReadWrite, BluwPrintCallable :UFUNCTION
+Expose functinality for designer 
+
+
