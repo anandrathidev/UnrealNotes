@@ -94,5 +94,70 @@ All this ghooks into Debug/Profileing tool: Stats, Console commands, Unreal insi
 
 
 
-Programming Advice: 
+Programming Advice: Tips, Tricks Do Donts 
+Start with BP to understand structure  engine , framework classes, 
+Project Structure: 
+  Modules: Divide code in module based on func , migrate to new prject etc 
+  Compiliong Times LIV++: Aloow LIV++ compiles as you chnage.
+  Plugins: 
+  Changes to Engine: avoid in general 
+  Sharing Files & Folders: e.g  content , source 
+  DLL & CIS: bins compiled and uploaded to src control , only be uploaded by CIS , programmers.
+  Platform Extentions:  nice way to work on code for specific platform make engine /project agnoustic to 
+
+Text & Localization 
+FText Localization : anything that needs to be displayed . 
+Localize dialogs , textures, materials , sounds 
+
+Specifiers: 
+    BlueprintPure: that will tranform func to a pure BP func that means we dont need flow to call , usually for constant function 
+    BlueprintType: Structure to be breakable and see all variable of in the tsrurecture  
+    EditlineNew/ Instanced : will allow you to display in editor , instead of having to have an asset and the nassign it to refrence , will allow an instance version of the class.
+    CallinEditor: 
+    
+    
+Actor Ticking: Avoid ticking as much as you can. et the tick by default to false so no BP will tick.
+              Only they mark as enable will tick.
+              Tick has an overhead. So allow Manager will tick do lot of things to lot of actors better than having all those actors ticking. Better to group  
+              Try to change tick rate if its not necessory have the tick every frame.
+
+
+EXPERT TIPS & TRICKS : 
+GameplayFramework: 
+Set it up in BP and C++ 
+GameInstance: use when you have to store info has to survive levels
+Several PlayControllers: can have severall , swap between PlayerController 
+Pawn Vs Charachter:  Charachter shd be anything that is a pawn also has a skeleton  mesh movement component like animal , robots , humanioids. movable parts like bone sthen has to be charachter. Pawn = Small UFO flyeing obj.
+ 
+Input Consuming: avaoid consuming inputs in BP so its easier to track who is consuming input. example if one of the BP takes input and eats it then you dont get in controllers so hell of a time. 
+Player and Game States:
+
+BP balance
+Core = C++ 
+Specific of level or Specific of prefab  = BP 
+Events can link to both BP or C++. so they can communicate
+
+Construction Helper: Eayiest way to get Reference to Assets but as soon as you load code that asset is loaded in mem . if that asset refrences other things that will also be loaded in memory. Alternative is Pointer to asset UAssetPtr  or TSubclassOf, TAssetSubclassOf Then you can stream in that assset to mem. Equivalent in BP is there 
+
+Build,Cook, Pack
+Backup Release Folder.
+
+ProfilerDebuuging 
+You can set a func to be only available  on development. DevelopmentOnly specifier . e.g Print String 
+Use Exec Specifier that will create console command version of that function. 
+
+
+
+
+
+
+
+
+
+              
+              
+              
+
+
+  
 
