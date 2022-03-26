@@ -1,0 +1,25 @@
+World Building intro - philosaphy :
+
+1.Sjoerd and Mario review the history of creating levels and worlds in Unreal Engine and explain the philosophy behind the evolution of the workflow.
+  Actors , Viewports, Camera conrols, Various toolbars have resemble to Todays UE
+  BSP blusshed docused
+  Lightning accurately rendered in editor viewport
+  UE2 Meshes were added 
+  scripting was simple events / tags
+  Outdoor world tools added.
+  UE2 & UE1 were subtractive worlds.
+  UE3 visual scripting added maitinee, cascade, material editor dded 
+  Additive worldf no more skyboxes
+  
+  Sub Editors and tools  - placable assets nd classes. It generates a level -> building -> Playable exp
+  
+  Niagara - particle editor
+  Material editor 
+  world editing 
+  BP actors 
+  sequencer 
+  and aids experimentation , diversity & quality
+  
+  
+  
+  
