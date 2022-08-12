@@ -1,0 +1,14 @@
+UGameplayAbility class: Base class they define what the Ability actually does in C++ code or Blueprint scripting, 
+                        as well as establishing elements of how the Ability should be treated, such as replication and instancing behaviors.
+
+UAbilityTask class:  Base class for asynchronous building blocks,
+                    Ability Tasks are written in C++, and frequently call delegates (in C++) or output execution pins (in Blueprints)
+                    when they complete their work, dependent on what the end result was (for example, an Ability that requires a target 
+                    might have an "aim" task with one delegate or output pin for confirming the target, and another for canceling the Ability).
+                    
+FGameplayAttribute structure: Gameplay Attributes are float values stored.
+                              Gameplay Ability System also supports Gameplay Attributes and Gameplay Effects.
+
+Ability System Component: Any Actor that interacts with the Gameplay Ability System must have an Ability System Component. This Component will activate Abilities, store Attributes, update Effects, and handle interactions
+ Once you have enabled the Gameplay Ability System and created an Actor that includes an Ability System Component, you can begin creating Abilities and determining how Actors should react to them.
+ 
