@@ -1,0 +1,26 @@
+
+https://www.youtube.com/playlist?list=PLplnkTzzqsZTfYh4UbhLGpI5kGd5oW_Hh
+Intro to Graphics 02 - Math Background
+  00:00 Math Background overview (Linear Algebra: vectors & matrices - a subset of chapter 2 of the book)
+  VECTORS: 
+  02:04 Vectors (1D - scalar [x]; 2D [x,y]; 3D [x,y,z]; 4D [x,y,z,w]; nD [x,y,z,w,...]; CG uses mostly 2D, 3D & 4D) 
+  03:47 Notation (column or vertical & transposed or horizontal) 
+  05:00 Meaning (on its own, it's entirely meaningless. Given a coordinate system [context], it can be: a position in space; direction and distance from origin [0,0,0,...])
+  10:53 Math Notation (lowercase letter with arrow on top; in CG it's usually a bold lowercase letter; for the scalars components: a tiny x, y, z besides the vector letter)
+  12:06 Length (notation |a| = sqrt(ax²+ay²+az²); unit vector |a| = 1 <- IMPORTANT)
+  12:55 Unit Vector (length = 1; used when we care only about direction; enables useful math operations)
+  VECTOR OPERATIONS:
+  13:34 Basic Operations (arrow representation; a and -a point to opposite directions; addition = a+b; subtraction = a-b)
+  15:13 Dot Product (it's a scalar: a.b = ax+bx * ay+by * az+bz; so a.a = |a|²)
+  16:35 Arrow Projection (projection of a over b = a.b/|b|; if |b| = 1, then projection = a.b)
+  18:28 Angle of Vectors (given angle θ of vectors a and b: a.b = |a||b| * cosθ; if |a| and |b| = 1, dot product a.b = cosθ)
+  19:30 Perpendicular Vectors (if θ = 90°, a.b = 0 because cosθ = 0; dot product of two perpendicular vectors is zero)
+  20:45 Dot Product Properties (cummulative: a.b = b.a; associative: (a.b).c = a.(b.c); and scalar multiplication: ka.b = a . kb = k(a.b) )
+  21:33 Cross Product (a x b: |a|*|b| = result is perpendicular to both vectors; in 2D it's a scalar = area of the polygon formed by the vectors)
+  26:18 Cross Product Properties (it does not behave as nicely as dot product: a x b = -(b x a); (ka) x b = k(a x b); and a x (b+c) = a x b + a x c)
+  MATRICES:
+  28:11 Notation (bold capital letter; members are lowercase with coordinates; 2D, 3D, and 4D are common in CG, typically 2x2, 3x3 and 4x4 but can be much larger: millions by millions)
+  30:43 Matrix by Vector Multiplication (the most common operation: Ab; used to transform vectors from one coordinate frame to another)
+  32:40 Matrix by Matrix Multiplication (AB != BA; not intuitive, take care!)
+  32:58 Closing Thoughts
+  
