@@ -1,5 +1,6 @@
 
 https://www.youtube.com/playlist?list=PLplnkTzzqsZTfYh4UbhLGpI5kGd5oW_Hh
+
 Intro to Graphics 02 - Math Background
   00:00 Math Background overview (Linear Algebra: vectors & matrices - a subset of chapter 2 of the book)
   VECTORS: 
@@ -9,6 +10,7 @@ Intro to Graphics 02 - Math Background
   10:53 Math Notation (lowercase letter with arrow on top; in CG it's usually a bold lowercase letter; for the scalars components: a tiny x, y, z besides the vector letter)
   12:06 Length (notation |a| = sqrt(ax²+ay²+az²); unit vector |a| = 1 <- IMPORTANT)
   12:55 Unit Vector (length = 1; used when we care only about direction; enables useful math operations)
+
   VECTOR OPERATIONS:
   13:34 Basic Operations (arrow representation; a and -a point to opposite directions; addition = a+b; subtraction = a-b)
   15:13 Dot Product (it's a scalar: a.b = ax+bx * ay+by * az+bz; so a.a = |a|²)
@@ -18,9 +20,44 @@ Intro to Graphics 02 - Math Background
   20:45 Dot Product Properties (cummulative: a.b = b.a; associative: (a.b).c = a.(b.c); and scalar multiplication: ka.b = a . kb = k(a.b) )
   21:33 Cross Product (a x b: |a|*|b| = result is perpendicular to both vectors; in 2D it's a scalar = area of the polygon formed by the vectors)
   26:18 Cross Product Properties (it does not behave as nicely as dot product: a x b = -(b x a); (ka) x b = k(a x b); and a x (b+c) = a x b + a x c)
+
   MATRICES:
   28:11 Notation (bold capital letter; members are lowercase with coordinates; 2D, 3D, and 4D are common in CG, typically 2x2, 3x3 and 4x4 but can be much larger: millions by millions)
   30:43 Matrix by Vector Multiplication (the most common operation: Ab; used to transform vectors from one coordinate frame to another)
-  32:40 Matrix by Matrix Multiplication (AB != BA; not intuitive, take care!)
-  32:58 Closing Thoughts
+  32:40 Matrix by Matrix Multiplication (AB != BA; not intuitive, take care!)  
+
+Intro to Graphics 03 - Raster Images (Part1)
+  00:34 Raster Images (mosaic) VS Vector Images (just math)
+  05:37 Definition of Colors (visible wavelength spectrum); Eye Receptors (cones); colors do not exist universally, they're just our perception
+  11:14 RGB: The three color values in our visual system (Red, Green, Blue). We can represent them in the [0,1] range; color space
+  15:34 Low-Dynamic-Range (LDR) vs High-Dynamic-Range (HDR); how to store/represent them
+  22:26 Raster Image Storage (interleaved VS separated channels); popular file formats; image compression; animation
+  50:16 Raster Image in Memory (interleaved, scanline order, swizzled order - typically Z-shaped)
+  55:57 Questions / Closing thoughts
+
   
+Intro to Graphics 04 - Raster Images (Part2)
+  00:44 Displays and Cameras (display's pixel intensity values are not evenly distributed, they use a simple exponential function: out = pow(in,  gamma); gamma is typically 2.2)
+  08:55 Gamma Correction (if out = pow(in,  gamma), then corrected_in = pow(desired_intensity, 1/gamma))
+  10:29 sRGB Standard (most popular standard, gamma is ≈ 2.2; we typically don't care about the actual gamma function implementation, just use the simpler approximation)
+  13:15 Display Devices (pixels and subpixels)
+  14:28 Cameras (sensors - photodetector arrays - only ONE color per pixel and some internal interpolation shenanigans; shutter implementation)
+  18:58 Pixels (think of it as the color value at the center; "a pixel is not a little square")
+  21:42 Alpha Blending (alpha means opacity; 0 is fully transparent, 1 is fully opaque; we use RGBA to store it; formulas)
+  32:22 Premultiplied Alpha vs Straight Alpha
+  37:40 Blending Modes (additive, difference, multiply, screen, divide... just look at Photoshop)
+  47:06 Closing Thoughts
+  
+
+Intro to Graphics 05 - 2D Transformations
+  00:16 Basic 2D Affine Transformations: Translation, Rotation, Scale, skew 
+  05:03 Translation (sum of vectors: p' = p + t)
+  06:25 Scale (multiplication by a scalar: p' = sp)
+  08:10 Rotation (multiplication by a matrix: p' = Rp)
+  14:22 The Rotation Matrix (it's an orthogonal matrix; the column vectors are perpendicular to each other; its transpose equals to its inverse)
+  18:45 The Scale Matrix (we can represent non-uniform scale as a matrix: p' = Sp; scale matrices are diagonal)
+  19:57 Skew (it's the combination of rotation, scale, and negative rotation: Sk = R1 + S + R2)
+  21:39 SVD or Singular Value Decomposition (any matrix can be decomposed into Orthogonal, Diagonal, Orthogonal: M = USV^T)
+  23:29 Homogeneous Coordinates (any series of Transformations can be simplified to one single Matrix p' = Mp = RSTRSSRSTRRTSRTTS...p)
+  32:30 Coordinate Frames
+  36:34 Positions vs Directions
