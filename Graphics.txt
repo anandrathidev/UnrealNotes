@@ -51,13 +51,54 @@ Intro to Graphics 04 - Raster Images (Part2)
 
 Intro to Graphics 05 - 2D Transformations
   00:16 Basic 2D Affine Transformations: Translation, Rotation, Scale, skew 
-  05:03 Translation (sum of vectors: p' = p + t)
+  05:03 Translation (sum of vectors: p' = p + t) 
   06:25 Scale (multiplication by a scalar: p' = sp)
-  08:10 Rotation (multiplication by a matrix: p' = Rp)
+  08:10 Rotation (multiplication by a matrix: p' = Rp) R = rotation matrix
+  Anti clock wise rotation: 
+  [p'x / p'y]   =  px [sin@ / cos@ ] + py [ -sin@ / cos@ ]
+  [p'x / p'y]   =  [[cos@ ,-sin@]  . [px  py] 
+                   [ sin@ , cos@ ]] 
+  Clock wise rotation: 
+  [p'x / p'y]   =  [[cos@ , sin@]  . [px  py] 
+                   [ -sin@ , cos@ ]] 
+
   14:22 The Rotation Matrix (it's an orthogonal matrix; the column vectors are perpendicular to each other; its transpose equals to its inverse)
+    not all orthogonal rotational matrix are perpendicular 
+    orthogonal = {rotational} U {reflection} 
+
   18:45 The Scale Matrix (we can represent non-uniform scale as a matrix: p' = Sp; scale matrices are diagonal)
+   e.g [sx,0
+         0, sy]
+         
   19:57 Skew (it's the combination of rotation, scale, and negative rotation: Sk = R1 + S + R2)
+    p' = R1 . S . R2 . p 
+    Sk = R1 . S . R2 
+    p' = Sk. p
+    
+   SVD takes a matricx M and seperates them into these 3 matrixes M = U S Vt = orthogonal rot . diagonal scale . orthogonal rot
   21:39 SVD or Singular Value Decomposition (any matrix can be decomposed into Orthogonal, Diagonal, Orthogonal: M = USV^T)
   23:29 Homogeneous Coordinates (any series of Transformations can be simplified to one single Matrix p' = Mp = RSTRSSRSTRRTSRTTS...p)
+     Homogeneous Coordinates little triock to make transformation as a Matrix Multiplication 
+     [px' ]       [ 1, 0, tx]  [px ]
+     [ py']   =   [ 0, 1, ty]  [py ]
+     [ 1  ]       [ 0, 0,  1 ] [ 1 ]
+     
+     p' = Mp = RSTRSSRSTRRTSRTTS...p
+     M = where  a, c, e .. are combined rotation scaling and Translation
+     [px' ]       [ a, c, e]  [px ]
+     [py' ]   =   [ b, d, f]  [py ]
+     [ 1  ]       [ 0, 0, 1]  [ 1 ]
+     
+     
   32:30 Coordinate Frames
   36:34 Positions vs Directions
+     Direction Vector is vector ehih keep Direction constant with diffrent frame context 
+     So Position Vector 
+     [px' ]       [ a, c, e]  [px ]
+     [py' ]   =   [ b, d, f]  [py ]
+     [ 1  ]       [ 0, 0, 1]  [ 1 ]
+
+     Direction Vector [without translation ]  
+     [px' ]       [ a, c, e]  [px ]
+     [py' ]   =   [ b, d, f]  [py ]
+     [ 0  ]       [ 0, 0, 1]  [ 0 ]
