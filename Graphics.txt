@@ -102,3 +102,56 @@ Intro to Graphics 05 - 2D Transformations
      [px' ]       [ a, c, e]  [px ]
      [py' ]   =   [ b, d, f]  [py ]
      [ 0  ]       [ 0, 0, 1]  [ 0 ]
+     
+     
+Intro to Graphics 06 - 3D Transformations
+  4x4 matrix  
+     [px' ]       [ a, d, g, j]  [px ]
+     [py' ]   =   [ b, e, h, k]  [py ]
+     [pz' ]       [ c, f, i, l]   [pz ]
+     [ 1  ]       [ 0, 0, 0, 1]  [ 0 ]
+
+scale:
+     [px' ]       [ sx, 0, 0, 0]  [px ]
+     [py' ]   =   [ 0, sy, 0, 0]  [py ]
+     [pz' ]       [ 0, 0, sz, 0]  [pz ]
+     [ 1  ]       [ 0, 0, 0,  1]  [ 1 ]
+
+Translation:
+     [px' ]       [ 1, 0, 0, tx]  [px ]
+     [py' ]   =   [ 0, 1, 0, ty]  [py ]
+     [pz' ]       [ 0, 0, 1, tz]  [pz ]
+     [ 1  ]       [ 0, 0, 0,  1]  [ 1 ]
+
+Rotation:
+  Rx
+     [px' ]       [ 1   ,     0,    0,   0]  [px ]
+     [py' ]   =   [ 0   ,  cos@, sin@,   0]  [py ]
+     [pz' ]       [ 0   , -sin@, cos@,   0]  [pz ]
+     [ 1  ]       [ 0   ,     0,    0,   1]  [ 1 ]
+  Ry
+     [px' ]       [ cos@,    0,  -sin@,    0]  [px ]
+     [py' ]   =   [ 0   ,    1,      0,    0]  [py ]
+     [pz' ]       [ sin@,    0,   cos@,    0]  [pz ]
+     [ 1  ]       [ 0   ,     0,     0,    1]  [ 1 ]
+
+  Rz
+     [px' ]       [ cos@,  sin@,      0,    0]  [px ]
+     [py' ]   =   [-sin@,  cos@,      0,    0]  [py ]
+     [pz' ]       [    0,     0,      1,    0]  [pz ]
+     [ 1  ]       [    0,     0,      0,    1]  [ 1 ]
+
+Translation:
+Yaw                               Pitch                         Roll
+[ cosA,  sinA,      0, ]      [ cosB,    0,  -sinB,   ]   [ 1   ,     0,    0,  ] 
+[-sinA,  cosA,      0, ]      [ 0   ,    1,      0,   ]   [ 0   ,  cosG, sinG,  ] 
+[    0,     0,      1, ]      [ sinB,    0,   cosB,   ]   [ 0   , -sinG, cosG,  ] 
+
+R = RzA * RyB * RxG
+= [ cosA*cosB,  cosA*sinB*sinG - sinA*sinG,   cosA*sinB*cosG + sinA*sinG ]
+  [ sinA*cosB,  sinA*sinB*sinG + sinA*sinG,   cosA*sinB*cosG + sinA*sinG ] 
+  [ -sinA    ,  cosB*sinG                 ,   cosG * cosG                ] 
+
+R = RzA * RyB * RxG !=  RyB * RxG * RzA .. etc 
+
+
