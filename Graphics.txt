@@ -141,17 +141,18 @@ Rotation:
      [pz' ]       [    0,     0,      1,    0]  [pz ]
      [ 1  ]       [    0,     0,      0,    1]  [ 1 ]
 
-Translation:
-Yaw                               Pitch                         Roll
-[ cosA,  sinA,      0, ]      [ cosB,    0,  -sinB,   ]   [ 1   ,     0,    0,  ] 
-[-sinA,  cosA,      0, ]      [ 0   ,    1,      0,   ]   [ 0   ,  cosG, sinG,  ] 
-[    0,     0,      1, ]      [ sinB,    0,   cosB,   ]   [ 0   , -sinG, cosG,  ] 
+  Translation:
+  Yaw                               Pitch                         Roll
+  [ cosA,  sinA,      0, ]      [ cosB,    0,  -sinB,   ]   [ 1   ,     0,    0,  ] 
+  [-sinA,  cosA,      0, ]      [ 0   ,    1,      0,   ]   [ 0   ,  cosG, sinG,  ] 
+  [    0,     0,      1, ]      [ sinB,    0,   cosB,   ]   [ 0   , -sinG, cosG,  ] 
 
-R = RzA * RyB * RxG
-= [ cosA*cosB,  cosA*sinB*sinG - sinA*sinG,   cosA*sinB*cosG + sinA*sinG ]
-  [ sinA*cosB,  sinA*sinB*sinG + sinA*sinG,   cosA*sinB*cosG + sinA*sinG ] 
-  [ -sinA    ,  cosB*sinG                 ,   cosG * cosG                ] 
+  R = RzA * RyB * RxG
+  = [ cosA*cosB,  cosA*sinB*sinG - sinA*sinG,   cosA*sinB*cosG + sinA*sinG ]
+    [ sinA*cosB,  sinA*sinB*sinG + sinA*sinG,   cosA*sinB*cosG + sinA*sinG ] 
+    [ -sinA    ,  cosB*sinG                 ,   cosG * cosG                ] 
 
-R = RzA * RyB * RxG !=  RyB * RxG * RzA .. etc 
+  R = RzA * RyB * RxG !=  RyB * RxG * RzA .. etc 
 
 
+Intro to Graphics 06 - 3D Transformations
