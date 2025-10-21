@@ -1,3 +1,14 @@
+//Classes  from Project setings
+Game Session Class
+Game State Class
+Player Controller Class
+Player State Class
+HUD Class
+Default Pawn Class
+Spectator Class
+Replay Spectator Player Controller Class
+Server Stat Replicator Class
+//=============================================================================
 Unreal Header Tool (UHT)  designed to support the UObject system. 
 custom parsing and code generation tool that extends  C++ .
 How UHT Works:
