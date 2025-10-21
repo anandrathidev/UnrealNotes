@@ -1,0 +1,53 @@
+Unreal Header Tool (UHT)  designed to support the UObject system. 
+custom parsing and code generation tool that extends  C++ .
+How UHT Works:
+Parsing C++ Headers: During the compilation process, UHT analyzes C++ header files (.h files). It  looks for Unreal-specific macros and metadata, 
+such as UCLASS, UPROPERTY, UFUNCTION, and various specifiers like BlueprintCallable or EditAnywhere.
+Code Generation: UHT generates additional C++ code. generated code  UObject system, including:
+Reflection: Enabling runtime introspection of classes, properties, and functions, which is vital for the editor, Blueprint system, and other engine features.
+Garbage Collection: Integrating the UProperty system to manage memory for UObject-derived classes.
+Blueprint Integration: Facilitating the exposure of C++ functions and properties to the Blueprint visual scripting system.
+Networking: Supporting features like Remote Procedure Calls (RPCs) for client-server communication and property replication.
+Other Features: Implementing functionalities like Blueprint events, onrep callbacks, and cheat display commands.
+Generated Files: UHT typically generates .generated.h header files and .gen.cpp translation units, which contain the implementations for these added features. 
+These files are usually located in the project's or plugin's intermediate folders.
+Importance of UHT:
+Extends C++ Functionality: UHT allows Unreal Engine to add specialized features to C++ that are not natively available in the language, making gameplay and engine development more efficient.
+Enables UObject System: It is fundamental to the UObject system, which provides the foundation for core Unreal Engine functionalities like reflection, serialization, and garbage collection.
+Facilitates Blueprint Integration: UHT is the bridge between C++ and Blueprints, enabling seamless interaction between native code and visual scripting.
+Streamlines Development: By automating the generation of boilerplate code, UHT allows developers to focus on core logic rather than manually implementing reflection or networking details.
+
+
+ABaseMagicCharacter :: ABaseMagicCharacter()
+//Create a Weapopn component = CreateDefaultSubobject
+Weapon = CreateDefaultSubobject<UChildActorComponent>(TEXT("Weapon"));
+//Attach Weapon to Parent Mesh [Main mesh]
+Weapon->SetupAttachment(GetMesh()) // SetupAttachment is a method in the Unreal Engine that initializes the attachment parent and socket for a USceneComponent. It is typically called from an actor's constructor to set up a component's parent before it is registered, while AttachToComponent is used for attaching components immediately, often during runtime. SetupAttachment takes the parent component and an optional socket name to specify the attachment point.
+
+//Add Mesh to weapon Actor using C++ 
+// .h
+UCLASS()
+class CPPTUTORIALBASICS_API ABaseWeapon : public AActor
+  GENERATED_BODY()
+public:
+// Sets default values for this actor's properties
+  ABaseWeapon();
+protected:
+// Called when the game starts or when spawned
+  virtual void BeginPlay() override;
+  UStaticMeshComponent* WeaponMesh;
+
+.cpp 
+ABaseWeapon::ABaseWeapon(){
+  WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Weapon Mesh"));
+}
+
+UPROPERTY(EditDefaultsOnly/EditAnywhere/...)
+float damage;
+
+
+UPROPERTY(EditDefaultsOnly/EditAnywhere/...)
+UStaticMeshComponent* WeaponMesh;
+
+UFUNCTION(BlueprintCallable)) // to make BluePrint callable
+void WeaponShoot();
