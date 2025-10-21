@@ -51,3 +51,15 @@ UStaticMeshComponent* WeaponMesh;
 
 UFUNCTION(BlueprintCallable)) // to make BluePrint callable
 void WeaponShoot();
+
+
+///Movements and vectors 
+
+void ACPPTutorialBasicsPlayerController :: Move(FInputActionValue &Value)
+
+FVector2D MovementVector = Value.Get<FVector2D>();
+FVector InputVector = FVector(MovementVector,0);
+
+GetPawn()->AddMovementInput(InputVector,speed,false);|
+
+}
