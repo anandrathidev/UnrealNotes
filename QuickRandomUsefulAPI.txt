@@ -74,3 +74,13 @@ FVector InputVector = FVector(MovementVector,0);
 GetPawn()->AddMovementInput(InputVector,speed,false);|
 
 }
+
+
+// Actor bullet 
+class UNiagaraComponent* BulletFX;
+class USpeherComponent * scollisionSphere 
+
+BulletFX = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Effects"));
+SetRootComponent(BulletFX);
+CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collsion Sphere"));
+CollisionSphere->SetupAttachment(BulletFX);
