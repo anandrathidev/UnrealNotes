@@ -104,3 +104,12 @@ AActor* ABaseMagicCharacter :: ShootBullet()
 // Position of spawned Actor 
 SpawnLocation = CreateDefaultSubobject<USceneComponent>(TEXT("Bullet Spawn Point"));
 SpawnLocation->SetupAttachment(GetMesh(D);
+
+// Projectile Movement motion
+BulletFX = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Effects"));
+SetRootComponent(BulletFX);
+CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collsion Sphere"));
+CollisionSphere->SetupAttachment(BulletFX);
+
+ProjetileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
+ProjetileMovement->ProjectileGravityScale =0;
