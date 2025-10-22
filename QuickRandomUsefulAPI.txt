@@ -84,3 +84,16 @@ BulletFX = CreateDefaultSubobject<UNiagaraComponent>(TEXT("Effects"));
 SetRootComponent(BulletFX);
 CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collsion Sphere"));
 CollisionSphere->SetupAttachment(BulletFX);
+
+//Spawn Actor 
+AActor* ABaseMagicCharacter :: ShootBullet()
+{
+  FActorSpawnParameters SpawnParams; //holds additional info 
+  SpawnParams. Instigator = this; //Who spawned it  
+  AActor* SpawnedActor = GetWorld()->SpawnActor<ABaseBullet>(
+  SpawnLocation->GetComponentLocation(),
+  GetActorRotation(),
+  SpawnParams);
+  
+  return SpawnedActor;
+}
