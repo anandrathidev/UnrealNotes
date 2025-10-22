@@ -115,4 +115,7 @@ ProjetileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("P
 ProjetileMovement->ProjectileGravityScale =0;
 
 //Setting a Timer Handler
+FTimerHandle TimerHandle;  // FTimerHandle MACRO can one time only 
 GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACPPTutorialBasicsPlayerController :: Function, TimeBetweenFires);
+
+
