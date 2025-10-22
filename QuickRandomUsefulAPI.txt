@@ -75,7 +75,7 @@ GetPawn()->AddMovementInput(InputVector,speed,false);|
 
 }
 
-
+//Dynamically create an Actor attach Niagara Component as root  
 // Actor bullet 
 class UNiagaraComponent* BulletFX;
 class USpeherComponent * scollisionSphere 
