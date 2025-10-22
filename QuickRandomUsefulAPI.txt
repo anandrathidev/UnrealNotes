@@ -86,6 +86,8 @@ CollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collsion Sphere
 CollisionSphere->SetupAttachment(BulletFX);
 
 //Spawn Actor 
+UPROPERTY(EditDefaultsOnly)
+TSubclassOf<ABaseBullet> BulletToSpawn;
 AActor* ABaseMagicCharacter :: ShootBullet()
 {
   FActorSpawnParameters SpawnParams; //holds additional info 
