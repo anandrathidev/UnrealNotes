@@ -113,3 +113,6 @@ CollisionSphere->SetupAttachment(BulletFX);
 
 ProjetileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
 ProjetileMovement->ProjectileGravityScale =0;
+
+//Setting a Timer Handler
+GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACPPTutorialBasicsPlayerController :: Function, TimeBetweenFires);
