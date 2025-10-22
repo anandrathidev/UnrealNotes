@@ -1,3 +1,4 @@
+
 //Classes  from Project setings
 Game Session Class
 Game State Class
@@ -99,3 +100,7 @@ AActor* ABaseMagicCharacter :: ShootBullet()
   
   return SpawnedActor;
 }
+
+// Position of spawned Actor 
+SpawnLocation = CreateDefaultSubobject<USceneComponent>(TEXT("Bullet Spawn Point"));
+SpawnLocation->SetupAttachment(GetMesh(D);
