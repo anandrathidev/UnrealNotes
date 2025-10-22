@@ -118,4 +118,13 @@ ProjetileMovement->ProjectileGravityScale =0;
 FTimerHandle TimerHandle;  // FTimerHandle MACRO can one time only 
 GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACPPTutorialBasicsPlayerController :: Function, TimeBetweenFires);
 
+//Using Timer Handler Delegate instead
 
+FTimerDelegate Delegate = FTimerDelegate :: CreateUObject(this, &ACPPTutorialBasicsPlayerController :: SetCanFire, true);
+FTimerHandle TimerHandle;
+GetWorld()->GetTimerManager().SetTimer(TimerHandle,Delegate, TimeBetweenFires,false);
+
+void ACPPTutorialBasicsPlayerController :: SetCanFire(bool Value)
+{
+  CanFire = true;
+}
