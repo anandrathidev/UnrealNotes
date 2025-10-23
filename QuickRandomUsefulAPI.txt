@@ -128,3 +128,107 @@ void ACPPTutorialBasicsPlayerController :: SetCanFire(bool Value)
 {
   CanFire = true;
 }
+
+// Actor Overlap or collision Events / Delegate
+// .h 
+UFUNCTION()
+void BeginOverlap(UPrimitiveComponent* OverlappedComponent
+AActor* OtherActor,
+UPrimitiveComponent* OtherComp,
+int32 OtherBodyIndex,
+bool bFromSweep,
+const FHitResult &SweepResult );
+
+// Include Niagra system 
+#include "NiagaraSystem.h"
+#include "NiagaraFunctionLibrary.h"
+
+// dont attach Niagra component as the object is going to destroy itself
+void ABaseBullet :: BeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp,..
+{
+UNiagaraFunctionLibrary :: SpawnSystemAtLocation(this, ImpactPartciles, GetActorLocation());
+  BulletHit();
+  Destroy(this);
+}
+void ABaseBullet :: BulletHit() {}
+
+
+// Damage 
+// in ABaseBullet 
+UPROPERTY(EditDefaultsOnly)
+float BaseDamage;
+UPROPERTY(EditDefaultsOnly)
+TSubclassOf<UDamageType> ;
+//.cpp
+void ABaseBullet:: BeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp .. )
+{
+  UNiagaraFunctionLibrary :: SpawnSystemAtLocation(this, ImpactPartciles, GetActorLocation());
+  BulletHit();
+  AController* PlayerC = GetInstigator()->GetController();
+  UGameplayStatics :: ApplyDamage(OtherActor,BaseDamage,PlayerC,this,DamageType);
+  Destroy();
+}
+
+virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser ) override;
+{
+  float ABaseMagicCharacter :: TakeDamage(float DamageAmount, FDamageEvent const &DamageEvent, AController *EventInstigator, AActor *Dar
+  HP -= DamageAmount;
+  if(HP <= 0) {
+    Destroy();|
+  }
+  return DamageAmount;
+}
+
+
+
+///Delegating Damage to a component 
+// Called when the game starts
+void UStatsComponent :: BeginPlay()
+{
+  Super::BeginPlay();
+  Health = MaxHealth;
+  Mana = MaxMana;
+  GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UStatsComponent::TakeDamage);
+}
+
+void UStatsComponent::TakeDamage(AActor *DamagedActor, float Damage, const UDamageType *DamageType, AController *InstigateBy,
+{
+  AActor
+  
+  ACharacter* Character = Cast<ACharacter>(DamagedActor);
+  if(Character)
+  
+  Character->GetCharacterMovement()->SetMovementMode(EMovementMode :: MOVE_Falling);
+  
+  return;
+  
+  if(IFrames)
+  {
+  
+  }
+  Health = FMath :: Clamp(Health-Damage, 0,MaxHealth);
+  if(Health == 0)
+  
+  KillActor(InstigateBy);
+
+}
+
+
+// Make a Blueprint Pure function 
+UFUNCTION(BlueprintPure
+FVector CalculateMovmentBlending();
+
+// Calculate Blending Movement using Dot product
+FVector ACPPTutorialBasicsPlayerController :: CalculateMovmentBlending()
+{
+  FVector movement = MovementRot.Vector();
+  FVector Shooting = ShootRot.Vector();
+  
+  float DotProd =FVector :: DotProduct(movement,Shooting);
+  
+  FVector BlendVector = movement - Shooting*DotProd;
+  
+  FVector OutputVector = FVector(DotProd, BlendVector.Length(),0);
+  
+  return FVector();
+}
